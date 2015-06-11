@@ -73,7 +73,7 @@ class ContinueCall
         $jsonAni='"ani": "'.$this->ani.'",';
         $jsonDnis='"dnis": "'.$this->dnis.'",';
         $jsonName='"name": "'.$this->name.'",';
-        $jsonResult='"result": "'.$this->result.'",';
+        $jsonResult='"result": "'.$this->result.'"';
         $jsonEnd='}';
         
         return $jsonStart.$jsonSession.$jsonDirection.$jsonAni.$jsonDnis.$jsonName.$jsonResult.$jsonEnd;

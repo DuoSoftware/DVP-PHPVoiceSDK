@@ -58,9 +58,9 @@ class SetDTMF
         $jsonStart='{';
         $jsonAction='"action": "setdtmf",';
         $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
-        $jsonCause='"dtmftype": "'.$this->DTMFtype.'"';
+        $jsonCause='"dtmftype": "'.$this->DTMFtype.'",';
         $jsonApp='"app": "'.$this->app.'",';
-        $jsonResult='"result": "'.$this->result.'",';        
+        $jsonResult='"result": "'.$this->result.'"';        
         $jsonEnd='}';
         
         return $jsonStart.$jsonAction.$jsonNextUrl.$jsonCause.$jsonApp.$jsonResult.$jsonEnd;

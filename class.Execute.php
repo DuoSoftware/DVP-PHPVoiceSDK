@@ -70,7 +70,7 @@ class Execute
         $jsonApp='"app": "'.$this->app.'",';
         $jsonResult='"result": "'.$this->result.'",';
         $jsonApplication='"application": "'.$this->application.'",';
-        $jsonData='"data": "'.$this->data.'",';
+        $jsonData='"data": "'.$this->data.'"';
         $jsonEnd='}';
         
         return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonApplication.$jsonData.$jsonEnd;

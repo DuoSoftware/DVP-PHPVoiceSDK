@@ -48,7 +48,7 @@ class ContinueCall
         $jsonAction='"action": "hangup",';
         $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
         $jsonApp='"app": "'.$this->app.'",';
-        $jsonResult='"result": "'.$this->result.'",';
+        $jsonResult='"result": "'.$this->result.'"';
         $jsonEnd='}';
         
         return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonEnd;
