@@ -15,6 +15,7 @@ include_once("WriteLog.php");
 require_once("PHPVoiceLibrary/class.DialNumber.php");
 require_once("PHPVoiceLibrary/class.DialExtension.php");
 require_once("PHPVoiceLibrary/class.PlayFile.php");
+require_once("PHPVoiceLibrary/class.PlayFileAndGetDigits.php");
 //require_once("PHPVoiceLibrary/class.VoiceMail.php");
 //require_once("PHPVoiceLibrary/class.RecordCall.php");
 //require_once("PHPVoiceLibrary/class.UploadFile.php");
@@ -45,7 +46,7 @@ $wrtLg->WriteFile("Process.php \t calleridname \t - ".$calleridname." - ".date("
 
 
 $wrtLg->WriteFile("Process.php >>>>>>>>>>>>>>>>>>>>>>>> -  - ".date("Y-m-d H:i:s"));
-//print('{"action": "dial","context": "TestInternalPbx", "nexturl": "http://172.20.112.9/IVR/Hangup.php", "dialplan": "XML", "callername": "1000", "callernumber" : "1000", "number" : "pbx/TestInternalPbx/2001"}');
+//print('{"action": "dial","context": "TestInternalPbx", "nexturl": "http://45.55.142.207:3333/IVR/Hangup.php", "dialplan": "XML", "callername": "1000", "callernumber" : "1000", "number" : "pbx/TestInternalPbx/2001"}');
 
 $time= date("H.i");
 /*if( (9.00<$time) && ($time<20.30))
@@ -77,7 +78,7 @@ Class ProcessIVR
             try
             {
              
-               
+         
                /////////////////////////////////////////start point/////////////////////////
                
                 if(strlen($result)==1)
@@ -85,11 +86,13 @@ Class ProcessIVR
                     switch ($result)
                         {
                             case 0:
-                                $string = $this->PlayVoiceMessageFile("cargills/ivr-transferoperator.wav","http://45.55.142.207:3333/cargillsIVR/Dial.php",$result);
+ $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>case 0 >>>>>>>>>");
+				$string = $this->PlayVoiceAndGetDigit("cargills/ivr-transferoperator.wav","http://45.55.142.207:3333/CargillsIVR/Dial.php",$result);
+#                                $string = $this->PlayVoiceMessageFile("cargills/ivr-transferoperator.wav","http://45.55.142.207:3333/CargillsIVR/Dial.php",$result);
                                 $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>case 0 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
                                 return $string;
                                 
-                                //$string = $this->DirectDial("http://172.20.112.9/PremadasaGemsIVR/end.php","155_156_lf","XML",$ani,$ani,"0112699557");        
+                                //$string = $this->DirectDial("http://45.55.142.207:3333/PremadasaGemsIVR/end.php","155_156_lf","XML",$ani,$ani,"0112699557");        
                                 //$wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>case 0 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
                                 //return $string;
                             
@@ -98,7 +101,7 @@ Class ProcessIVR
                                                         
                             default:
                                 $string = $this->PlayVoiceMessageFile("cargillsIVR/ivr-cargills_invalid_extension.wav","","");
-                                $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>extension num count != 1 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
+                                $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>extension num count != 1 >>>>>>>>> -".$string."-".$result."  - ".date("Y-m-d H:i:s"));
                                 return $string;
                         }
                     
@@ -109,8 +112,8 @@ Class ProcessIVR
                 {
                     if( substr_compare($result,7,0,1) == 0)
                     {
-                        // $string = $this->PlayVoiceFilevoice("cargills/ivr-transferextension.wav","http://172.20.112.9/cargillsIVR/Dial.php",$result);
-                        $string = $this->DialExtension("http://45.55.142.207:3333/cargillsIVR/end.php","136_143_Cargills","XML",$ani,$ani,$result);
+                        // $string = $this->PlayVoiceFilevoice("cargills/ivr-transferextension.wav","http://45.55.142.207:3333/cargillsIVR/Dial.php",$result);
+                        $string = $this->DirectDialExtension("http://45.55.142.207:3333/cargillsIVR/end.php","136_143_Cargills","XML",$ani,$ani,$result);
                         $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>extension >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
                         return $string;
                     }
@@ -124,11 +127,11 @@ Class ProcessIVR
                     
                 else
                 {
-                    //$string = $this->PlayFile("http://172.20.112.9/DuoIVR/end.php","TestInternalPbx","XML","1000","1000",$result);
+                    //$string = $this->PlayFile("http://45.55.142.207:3333/DuoIVR/end.php","TestInternalPbx","XML","1000","1000",$result);
                     $string= '{"action": "hangup","cause": "NORMAL_CLEAN","nexturl": "http://45.55.142.207:3333/cargillsIVR/end.php"}';
                     $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>extension num count != 3 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
                      //   $filename=$ani."_".$dnis."-".$d."-".$time.".wav";
-                      //  $string = $this->RecordMessage("filename.wav","http://172.20.112.9/DuoIVR/end.php","result_12","","5","10","3000","","","http://172.20.112.9/DuoIVR/upload.php","9");
+                      //  $string = $this->RecordMessage("filename.wav","http://45.55.142.207:3333/DuoIVR/end.php","result_12","","5","10","3000","","","http://45.55.142.207:3333/DuoIVR/upload.php","9");
                       //  $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>> case 3 ---- else >>RecordMessage>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
                      //   $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>> case 3 ---- else >>RecordMessage>>>>>>> ".date("Y-m-d H:i:s"));
                             // return '{"action": "hangup","cause": "NORMAL_CLEAN","nexturl": ""}';
@@ -153,7 +156,8 @@ Class ProcessIVR
                 $playFile->SetFile($file);
                 $playFile->SetNextUrl($nexturl);
                 $playFile->SetResult($result);
-                
+		$playFile->SetLoops("1");               
+ 
                 $result= $playFile->GetResult();
                 return $result;
             }
@@ -162,8 +166,41 @@ Class ProcessIVR
                return $ex; 
             }
        }   
-    
-     function DialExtension($nexturl,$context,$dialplan,$callername,$callernumber,$number)
+
+ function PlayVoiceAndGetDigit($file,$nexturl,$result)
+        {
+ $wrtLg = new WriteLog();
+
+        try
+            {
+
+		$wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>PlayVoiceAndGetDigit >>>>>>>>>");
+		$objPlayFile = new PlayFileAndGetDigits();
+		$objPlayFile->SetFile($file);
+		$objPlayFile->SetNextUrl($nexturl);
+		$objPlayFile->SetResult($result);
+		$objPlayFile->SetErrorFile("");
+		$objPlayFile->SetDigitTimeout("10");
+		$objPlayFile->SetInputTimeout("1000");
+		$objPlayFile->SetLoops("1");
+		$objPlayFile->SetTerminator("#");
+		$objPlayFile->SetStrip("#");
+		$objPlayFile->SetMaxDigits(2);
+		$objPlayFile->SetDigits(1);
+
+	 $result= $objPlayFile->GetResult();         
+$wrtLg->WriteFile($result); 
+      return $result;
+            }
+        catch (exception $ex)
+            {
+               return $ex;
+            }
+       }
+   
+
+ 
+     function DirectDialExtension($nexturl,$context,$dialplan,$callername,$callernumber,$number)
         {
             try
              {
@@ -177,7 +214,8 @@ Class ProcessIVR
                 $dialNum->SetNumber($number);
                  
                 $result = $dialNum->GetResult();
-                return $result;
+
+               return $result;
              
              }
             catch(exception $ex)

@@ -38,7 +38,7 @@ $objPlayFile->SetNextUrl("http://45.55.142.207:3333/CargillsIVR/Process.php");
 $objPlayFile->SetResult("result");
 $objPlayFile->SetErrorFile("");
 $objPlayFile->SetDigitTimeout("20");
-$objPlayFile->SetInputTimeout("100");
+$objPlayFile->SetInputTimeout("5000");
 $objPlayFile->SetLoops("3");
 $objPlayFile->SetTerminator("#");
 $objPlayFile->SetStrip("#");
