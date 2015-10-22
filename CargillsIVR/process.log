@@ -1,0 +1,8 @@
+start 	 -  - 2015-06-09 18:07:01
+start 	  result  	 -  - 2015-06-09 18:07:01
+start 	  session 	 -  - 2015-06-09 18:07:01
+start 	  ani 	 -  - 2015-06-09 18:07:01
+start 	  dnis 	 -  - 2015-06-09 18:07:01
+start 	  callerdirection  	 -  - 2015-06-09 18:07:01
+start 	  calleridname 	 -  - 2015-06-09 18:07:01
+start 	 callString  	 - {"action": "setdtmf","nexturl": "http://172.20.112.9/CargillsIVR/menu.php","dtmftype": "inband"} - 2015-06-09 18:07:01
