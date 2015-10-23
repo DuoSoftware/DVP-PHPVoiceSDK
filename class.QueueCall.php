@@ -5,14 +5,24 @@
  * @copyright 2014
  */
 
-class BreakCall
+class QueueCall
 {
    // private $file="TestRecord_1.wav";
     private $nexturl="http://192.168.1.195/IVR/end.php";
-    private $skill="";
-    private $app="";
+    //private $posturl="http://192.168.1.195/IVR/end.php";
     private $result="result_1234";
+    private $skill="";
+    private $profile="";
+    
       
+  /* "action": "ards",
+  "nexturl": "http://localhost/IVR/end.json",
+  "posturl": "http://localhost/IVR/end.json",
+  "result": "result",
+  "skill" : "123456",
+  "profile": "TEST"
+    
+    */
     
   public function SetNextUrl($targetUrl)
         {
@@ -23,11 +33,11 @@ class BreakCall
        
         }
    
-   public function SetApp($targetApp)
+   public function SetProfile($targetProfile)
         {        
-            if( !empty( $targetApp ) )
+            if( !empty( $targetProfile ) )
         
-               $this->app = $targetApp;
+               $this->profile = $targetProfile;
         }
              
   public function SetResult($targetResult)
@@ -54,14 +64,14 @@ class BreakCall
     try
     {
     $jsonStart='{';
-    $jsonAction='"action": "break",';
+    $jsonAction='"action": "ards",';
     $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
-    $jsonApp='"app": "'.$this->app.'",';
+    $jsonProfile='"profile": "'.$this->profile.'",';
     $jsonResult='"result": "'.$this->result.'",';
     $jsonSkill='"skill": "'.$this->skill.'"';
     $jsonEnd='}';
     
-    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonSkill.$jsonEnd;
+    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonProfile.$jsonResult.$jsonSkill.$jsonEnd;
     }
     catch(exception $ex)
     {
