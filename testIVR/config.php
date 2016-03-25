@@ -24,7 +24,7 @@ $GLOBALS['host']=$conf['host'];
 $GLOBALS['context']=$conf['context'];
 
 //print ($_SERVER['REQUEST_URI']);
-echo substr($_SERVER['REQUEST_URI'],0,strrpos($_SERVER['REQUEST_URI'],"/")+1);
+//echo substr($_SERVER['REQUEST_URI'],0,strrpos($_SERVER['REQUEST_URI'],"/")+1);
 
 
 ?>
