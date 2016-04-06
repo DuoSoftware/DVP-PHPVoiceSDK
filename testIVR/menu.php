@@ -37,8 +37,9 @@ $wrtLg->WriteFile("menu \t  calleridname \t - ".$calleridname." - ".date("Y-m-d 
 
 $folder=substr($_SERVER['REQUEST_URI'],0,strrpos($_SERVER['REQUEST_URI'],"/")+1);
 $nextFile="Process.php";
-$nextURL="http://".$GLOBALS['host'].":".$GLOBALS['port'].$folder.$nextFile;
+//$nextURL="http://".$GLOBALS['host'].":".$GLOBALS['port'].$folder.$nextFile;
 //print ("MMMMMM--".$nextURL);
+$nextURL="Process.php";
 
 $objPlayFile->SetFile("ivr-menu.wav");
 $objPlayFile->SetNextUrl($nextURL);

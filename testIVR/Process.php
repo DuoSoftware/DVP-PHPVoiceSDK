@@ -86,21 +86,21 @@ Class ProcessIVR
                         {
                             case 1:
                             $nextFile="Hangup.php";
-                                $string = $this->DirectDial($nextPath.$nextFile,$context,"XML",$ani,$ani,"2001");
+                                $string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"2001");
 				                $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>case 1 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
 				                return $string;
                             break;
                             
                             case 2:
                             $nextFile="Hangup.php";
-                                $string = $this->DirectDial($nextPath.$nextFile,$context,"XML",$ani,$ani,"2001");        
+                                $string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"2001");        
                                 $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>case 0 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
                                 return $string;
                             break;
                             
                             case 3:
                             $nextFile="Hangup.php";
-                                $string = $this->DirectDial($nextPath.$nextFile,$context,"XML",$ani,$ani,"0812385561");        
+                                $string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"0812385561");        
                                 $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>case 0 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
                                 return $string;
                             
@@ -108,14 +108,14 @@ Class ProcessIVR
                             
                             case 4:
                             $nextFile="Hangup.php";
-                                $string = $this->DirectDial($nextPath.$nextFile,$context,"XML",$ani,$ani,"0812220633");        
+                                $string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"0812220633");        
                                 $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>case 0 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
                                 return $string;
                             break;
 							
 							case 5:
                             $nextFile="Hangup.php";
-                                $string = $this->DirectDial($nextPath.$nextFile,$context,"XML",$ani,$ani,"0812220632");        
+                                $string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"0812220632");        
                                 $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>case 0 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
                                 return $string;
                             break;
@@ -130,7 +130,7 @@ Class ProcessIVR
                 }
                 else
                 {
-                    $string= '{"action": "hangup","cause": "NORMAL_CLEAN","nexturl": "'.$nextPath.$nextFile.'"}';
+                    $string= '{"action": "hangup","cause": "NORMAL_CLEAN","nexturl": "'.$nextFile.'"}';
                     return $string;
                 } 
                
