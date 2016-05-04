@@ -130,7 +130,7 @@ class PlayFile
         $jsonErrorFile='"errorfile": "'.$this->errorFile.'",';
         $jsonDigitTimeOut='"digittimeout": "'.$this->digitTimeOut.'",';
         $jsonInputTimeOut='"inputtimeout": "'.$this->inputTimeOut.'",';
-        $jsonLoops='"loop": "'.$this->loops.'",';
+        $jsonLoops='"loops": "'.$this->loops.'",';
         $jsonTerminator='"terminator": "'.$this->terminator.'",';
         $jsonStrip='"strip": "'.$this->strip.'",';
         $jsonDigits='"digits": "'.$this->digits.'"';

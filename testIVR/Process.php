@@ -9,7 +9,7 @@
 include_once("WriteLog.php");
 require_once("config.php");
 require_once("PHPVoiceLibrary/class.DialNumber.php");
-require_once("PHPVoiceLibrary/class.DialExtension.php");
+//require_once("PHPVoiceLibrary/class.DialExtension.php");
 require_once("PHPVoiceLibrary/class.PlayFile.php");
 require_once("PHPVoiceLibrary/class.PlayFileAndGetDigits.php");
 //require_once("PHPVoiceLibrary/class.VoiceMail.php");
