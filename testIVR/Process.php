@@ -12,6 +12,7 @@ require_once("PHPVoiceLibrary/class.DialNumber.php");
 //require_once("PHPVoiceLibrary/class.DialExtension.php");
 require_once("PHPVoiceLibrary/class.PlayFile.php");
 require_once("PHPVoiceLibrary/class.PlayFileAndGetDigits.php");
+require_once("PHPVoiceLibrary/class.Ards.php");
 //require_once("PHPVoiceLibrary/class.VoiceMail.php");
 //require_once("PHPVoiceLibrary/class.RecordCall.php");
 //require_once("PHPVoiceLibrary/class.UploadFile.php");
@@ -86,14 +87,16 @@ Class ProcessIVR
                         {
                             case 1:
                             $nextFile="Hangup.php";
-                                $string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"2001");
+                                $string = $this-> SetArds($nextFile,"http://localhost/IVR/end.json","result","3,10","TEST","3","1");
+                                #$string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"2001");
 				                $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>case 1 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
 				                return $string;
                             break;
                             
                             case 2:
                             $nextFile="Hangup.php";
-                                $string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"2001");        
+                                //$string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"2001");
+                                $string = $this-> SetArds($nextFile,"http://localhost/IVR/end.json","result","8,10","TEST","3","1");        
                                 $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>case 0 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
                                 return $string;
                             break;
@@ -202,6 +205,30 @@ Class ProcessIVR
                 $dialNum->SetNumber($number);
                  
                 $result = $dialNum->GetResult();
+                return $result;
+             
+             }
+            catch(exception $ex)
+             {
+                return $ex;
+             }         
+        }
+        
+    function SetArds($nexturl,$posturl,$result,$skill,$profile,$company,$tenant)
+        {
+            try
+             {
+                $ards = new Ards();
+                
+                $ards->SetNextUrl($nexturl);
+                $ards->SetSetPostUrl($posturl);
+                $ards->SetResult($result);
+                $ards->SetSkill($skill);
+                $ards->SetProfile($profile);
+                $ards->SetCompany($company);
+                $ards->SetTenant($tenant); 
+                
+                $result = $ards->GetResult();
                 return $result;
              
              }
