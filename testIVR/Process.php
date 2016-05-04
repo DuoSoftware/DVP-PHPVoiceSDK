@@ -87,8 +87,8 @@ Class ProcessIVR
                         {
                             case 1:
                             $nextFile="Hangup.php";
-                                $string = $this-> SetArds($nextFile,"http://localhost/IVR/end.json","result","3,10","TEST","3","1");
-                                #$string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"2001");
+                                //$string = $this-> SetArds($nextFile,"http://localhost/IVR/end.json","result","3","TEST","3","1");
+                                $string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"2002");
 				                $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>case 1 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
 				                return $string;
                             break;
@@ -96,12 +96,12 @@ Class ProcessIVR
                             case 2:
                             $nextFile="Hangup.php";
                                 //$string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"2001");
-                                $string = $this-> SetArds($nextFile,"http://localhost/IVR/end.json","result","8,10","TEST","3","1");        
+                                $string = $this-> SetArds($nextFile,"http://localhost/IVR/end.json","result","8","TEST","3","1");        
                                 $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>case 0 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
                                 return $string;
                             break;
                             
-                            case 3:
+                         /*   case 3:
                             $nextFile="Hangup.php";
                                 $string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"0812385561");        
                                 $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>case 0 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
@@ -121,7 +121,7 @@ Class ProcessIVR
                                 $string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"0812220632");        
                                 $wrtLg->WriteFile("ProcessIVR>>>>>>>>>>>case 0 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
                                 return $string;
-                            break;
+                            break;*/
                             
                             default:
                                 $string = $this->PlayVoiceFilevoice("ivr-invalid_extension.wav");
