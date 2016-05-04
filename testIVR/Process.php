@@ -133,6 +133,7 @@ Class ProcessIVR
                 }
                 else
                 {
+                    $nextFile="Hangup.php";
                     $string= '{"action": "hangup","cause": "NORMAL_CLEAN","nexturl": "'.$nextFile.'"}';
                     return $string;
                 } 
@@ -221,7 +222,7 @@ Class ProcessIVR
                 $ards = new Ards();
                 
                 $ards->SetNextUrl($nexturl);
-                $ards->SetSetPostUrl($posturl);
+                $ards->SetPostUrl($posturl);
                 $ards->SetResult($result);
                 $ards->SetSkill($skill);
                 $ards->SetProfile($profile);

@@ -89,9 +89,9 @@ class Ards
     $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
     $jsonPostUrl='"posturl": "'.$this->posturl.'",';
     $jsonResult='"result": "'.$this->result.'",';
-    $jsonSkill='"skill": "'.$this->skill.'"';
-    $jsonProfile='"profile": "'.$this->profile.'"';
-    $jsonCompany='"company": "'.$this->company.'"';
+    $jsonSkill='"skill": "'.$this->skill.'",';
+    $jsonProfile='"profile": "'.$this->profile.'",';
+    $jsonCompany='"company": "'.$this->company.'",';
     $jsonTenant='"tenant": "'.$this->tenant.'"';
     $jsonEnd='}';
     
