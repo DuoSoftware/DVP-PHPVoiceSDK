@@ -12,9 +12,9 @@ class PlayFile
     private $app="";
     private $result="result_1234";
     private $errorFile="";
-    private $digitTimeOut="5";
-    private $inputTimeOut="10";
-    private $loops="3";
+    private $digitTimeOut="0";
+    private $inputTimeOut="0";
+    private $loops="0";
     private $terminator="*";
     private $strip="*";
     private $digits="9";
