@@ -3,12 +3,13 @@ This module provides an HTTP based Telephony API using a Duo Voice application i
 It can use to create Custom IVR, send instructions to Duo voice application such as play file, dial number, voicemail etc.
 it will communicate with http post methods and json strings.
 Duo Voice application always send following parameters from post method.
+
       ________________________________________________________________________
-      |  session          |     	Session Id                                  |
-      |  ani              |	      Automatic Number Identification             |
-      |  dnis             |	      Destination number Identification Service   |
-      |  callerdirection  |	      Incomming  / outgoing                       |
-      |  calleridname 	  |       Caller id                                           |
+      |  session          |       Session Id                                  |
+      |  ani              |	  Automatic Number Identification             |
+      |  dnis             |	  Destination number Identification Service   |
+      |  callerdirection  |	  Incomming  / outgoing                       |
+      |  calleridname 	  |       Caller id                                   |
       |  result	DTMF      |       DTMF                                        |
       |_______________________________________________________________________|
                               Figure 1.0
@@ -20,7 +21,7 @@ http application has to reply  json string to the Duo Voice application with som
       |  {                                                          |
       |     "action": "playandgetdigits",                           |
       |     "file": "Duo_IVR_Menu.wav",                             |
-      |     "nexturl": "http://ivr.veery.cloud/IVR/Process.php",      |
+      |     "nexturl": "http://ivr.veery.cloud/IVR/Process.php",    |
       |     "result": "result",                                     |
       |     "errorfile": "",                                        |
       |     "digittimeout": "20",                                   |
