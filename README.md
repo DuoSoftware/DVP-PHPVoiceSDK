@@ -6,9 +6,9 @@ Duo Voice application always send following parameters from post method.
 
       ________________________________________________________________________
       |  session          |       Session Id                                  |
-      |  ani              |	  Automatic Number Identification                |
-      |  dnis             |	  Destination number Identification Service      |
-      |  callerdirection  |	  Incomming  / outgoing                          |
+      |  ani              |	  Automatic Number Identification                 |
+      |  dnis             |	  Destination number Identification Service       |
+      |  callerdirection  |	  Incomming  / outgoing                           |
       |  calleridname 	  |       Caller id                                   |
       |  result	DTMF      |       DTMF                                        |
       |_______________________________________________________________________|
