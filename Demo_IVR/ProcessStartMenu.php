@@ -86,7 +86,7 @@ Class ProcessIVR
                             case 1:
 				// CLIENT SUPPORT
 	                        $nextFile="Hangup.php";
-                                $string = $this-> SetArds($nextFile,"http://localhost/IVR/end.json","result","34","HOLD_1","3","1");
+                                $string = $this-> SetArds($nextFile,"http://localhost/IVR/end.json","result","34","HR","HOLD_1","3","1");
 				//$string = $this-> SetArds($nextFile,"http://localhost/IVR/end.json","result","ATTRIBUTE_ID","HOLD_MUSIC_NAME","VAR_1","VAR_2");
                                 //$string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"2002");
 		                $wrtLg->WriteFile("ProcessStartMenuIVR>>>>>>>>>>>case 1 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
@@ -97,7 +97,7 @@ Class ProcessIVR
 				//PROJECT AND IMPLEMENTATION		
         	                $nextFile="Hangup.php";
                                 //$string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"2001");
-                                $string = $this->SetArds($nextFile,"http://localhost/IVR/end.json","result","34","HOLD_1","3","1");        
+                                $string = $this->SetArds($nextFile,"http://localhost/IVR/end.json","result","34","SALSE","HOLD_1","3","1");        
                                 $wrtLg->WriteFile("ProcessStartMenuIVR>>>>>>>>>>>case 2 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
                                 return $string;
                             break;
@@ -106,7 +106,7 @@ Class ProcessIVR
 				//SALSE AND MARKETING	
 	                        $nextFile="Hangup.php";
 //                              $string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"0812385561");        
-    				$string = $this->SetArds($nextFile,"http://localhost/IVR/end.json","result","35","HOLD_1","3","1");
+    				$string = $this->SetArds($nextFile,"http://localhost/IVR/end.json","result","35","ACCOUNTS","HOLD_1","3","1");
                                 $wrtLg->WriteFile("ProcessStartMenuIVR>>>>>>>>>>>case 3 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
                                 return $string;
                             
@@ -116,7 +116,7 @@ Class ProcessIVR
                             	//HR
 				$nextFile="Hangup.php";
 //                              $string = $this->DirectDial($nextFile,$context,"XML",$ani,$ani,"0812220633");        
-				$string = $this->SetArds($nextFile,"http://localhost/IVR/end.json","result","3","HOLD_1","3","1");    
+				$string = $this->SetArds($nextFile,"http://localhost/IVR/end.json","result","3","IMPLEMENTATION","HOLD_1","3","1");    
                                 $wrtLg->WriteFile("ProcessStartMenuIVR>>>>>>>>>>>case 4 >>>>>>>>> -".$string."  - ".date("Y-m-d H:i:s"));
                                 return $string;
                             break;
@@ -227,7 +227,7 @@ Class ProcessIVR
              }         
         }
         
-	function SetArds($nexturl,$posturl,$result,$skill,$profile,$company,$tenant)
+	function SetArds($nexturl,$posturl,$result,$skill,$skillDisplay,$profile,$company,$tenant)
         {
 //$wrtLg->WriteFile("ProcessIVR>>>>SetArds>>>>>".$nexturl."--".$posturl."--".$skill.">>case 0 >>>>>>>>> -".$profile."  - ".date("Y-m-d H:i:s"));
             try
@@ -238,6 +238,7 @@ Class ProcessIVR
                 $ards->SetPostUrl($posturl);
                 $ards->SetResult($result);
                 $ards->SetSkill($skill);
+				$ards->SetSkillDisplay($skillDisplay);
                 $ards->SetProfile($profile);
                 $ards->SetCompany($company);
                 $ards->SetTenant($tenant); 
