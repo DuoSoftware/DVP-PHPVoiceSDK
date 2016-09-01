@@ -13,6 +13,7 @@ class Ards
     private $posturl="http://localhost/IVR/end.php";
     private $result="result";
     private $skill="3,10";
+	private $skillDisplay="DEFAULT";
     private $profile="TEST";
     private $company="3";
     private $tenant="1";
@@ -51,6 +52,16 @@ class Ards
                 $this->skill = $targetSkill;
       
         }
+		
+  public function SetSkillDisplay($targetSkillDisplay)
+        {
+
+            if( !empty( $targetSkillDisplay ) )
+
+                $this->skillDisplay = $targetSkillDisplay;
+
+        }
+
   
    public function SetProfile($targetProfile)
         {
@@ -90,12 +101,13 @@ class Ards
     $jsonPostUrl='"posturl": "'.$this->posturl.'",';
     $jsonResult='"result": "'.$this->result.'",';
     $jsonSkill='"skill": "'.$this->skill.'",';
+	$jsonSkillDisplay='"skilldisplay": "'.$this->skillDisplay.'",';
     $jsonProfile='"profile": "'.$this->profile.'",';
     $jsonCompany='"company": "'.$this->company.'",';
     $jsonTenant='"tenant": "'.$this->tenant.'"';
     $jsonEnd='}';
     
-    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonPostUrl.$jsonResult.$jsonSkill.$jsonProfile.$jsonCompany.$jsonTenant.$jsonEnd;
+    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonPostUrl.$jsonResult.$jsonSkill.$jsonSkillDisplay.$jsonProfile.$jsonCompany.$jsonTenant.$jsonEnd;
     }
     catch(exception $ex)
     {
