@@ -19,6 +19,7 @@ class PlayFileAndGetDigits
     private $strip="*";
     private $maxdigit="";
     private $digits="9";
+    private $skillDisplay="DEFAULT";
     
     
      
@@ -107,6 +108,16 @@ class PlayFileAndGetDigits
                 $this->digits = $targetDigits;
         }
         
+   public function SetSkillDisplay($targetSkillDisplay)
+        {
+
+            if( !empty( $targetSkillDisplay ) )
+
+                $this->skillDisplay = $targetSkillDisplay;
+
+        }
+
+        
  
     
   function GetResult()
@@ -126,10 +137,12 @@ class PlayFileAndGetDigits
         $jsonTerminator='"terminator": "'.$this->terminator.'",';
         $jsonStrip='"strip": "'.$this->strip.'",';
         $jsonMaxDigits='"maxdigits": "'.$this->maxdigit.'",';
+        $jsonSkillDisplay='"skilldisplay": "'.$this->skillDisplay.'",';
         $jsonDigits='"digits": "'.$this->digits.'"';
+        
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonFile.$jsonNextUrl.$jsonApp.$jsonResult.$jsonErrorFile.$jsonDigitTimeOut.$jsonInputTimeOut.$jsonLoops.$jsonTerminator.$jsonStrip.$jsonMaxDigits.$jsonDigits.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonFile.$jsonNextUrl.$jsonApp.$jsonResult.$jsonErrorFile.$jsonDigitTimeOut.$jsonInputTimeOut.$jsonLoops.$jsonTerminator.$jsonStrip.$jsonSkillDisplay.$jsonMaxDigits.$jsonDigits.$jsonEnd;
     }
     catch(exception $ex)
     {
