@@ -12,6 +12,7 @@ class Ards
     private $nexturl="http://localhost/IVR/end.php";
     private $posturl="http://localhost/IVR/end.php";
     private $result="result";
+    private $params="Params_Test";
     private $skill="3,10";
 	private $skillDisplay="DEFAULT";
     private $profile="TEST";
@@ -42,7 +43,14 @@ class Ards
         
                $this->result = $targetResult;
      
-        }     
+        } 
+      
+   public function SetParams($targetParams)
+        {
+            if( !empty( $targetParams ) )
+
+               $this->params = $targetParams;
+        } 
         
   public function SetSkill($targetSkill)
         {
@@ -100,6 +108,7 @@ class Ards
     $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
     $jsonPostUrl='"posturl": "'.$this->posturl.'",';
     $jsonResult='"result": "'.$this->result.'",';
+    $jsonParams='"params": '.$this->params.',';
     $jsonSkill='"skill": "'.$this->skill.'",';
 	$jsonSkillDisplay='"skilldisplay": "'.$this->skillDisplay.'",';
     $jsonProfile='"profile": "'.$this->profile.'",';
@@ -107,7 +116,7 @@ class Ards
     $jsonTenant='"tenant": "'.$this->tenant.'"';
     $jsonEnd='}';
     
-    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonPostUrl.$jsonResult.$jsonSkill.$jsonSkillDisplay.$jsonProfile.$jsonCompany.$jsonTenant.$jsonEnd;
+    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonPostUrl.$jsonResult.$jsonParams.$jsonSkill.$jsonSkillDisplay.$jsonProfile.$jsonCompany.$jsonTenant.$jsonEnd;
     }
     catch(exception $ex)
     {

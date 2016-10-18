@@ -11,6 +11,7 @@ class Execute
     private $nexturl="http://192.168.1.195/IVR/end.php";
     private $app="";
     private $result="result_1234";
+    private $params="Params_Test";
     private $application="";
     private $data="";
       
@@ -42,6 +43,13 @@ class Execute
           
         }
         
+   public function SetParams($targetParams)
+        {
+            if( !empty( $targetParams ) )
+
+               $this->params = $targetParams;
+        }
+        
    public function SetApplication($targetApplication)
         {        
             if( !empty( $targetApplication ) )
@@ -69,11 +77,12 @@ class Execute
         $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
         $jsonApp='"app": "'.$this->app.'",';
         $jsonResult='"result": "'.$this->result.'",';
+        $jsonParams='"params": '.$this->params.',';
         $jsonApplication='"application": "'.$this->application.'",';
         $jsonData='"data": "'.$this->data.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonApplication.$jsonData.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonApplication.$jsonData.$jsonEnd;
     }
     catch(exception $ex)
     {

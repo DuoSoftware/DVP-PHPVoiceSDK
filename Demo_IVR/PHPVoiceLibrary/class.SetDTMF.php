@@ -11,6 +11,7 @@ class SetDTMF
     private $nexturl="http://192.168.1.195/IVR/end.php";
     private $DTMFtype="inband";
     private $app="";
+    private $params="Params_Test";
     private $result="result_1234";        
       
     
@@ -39,6 +40,14 @@ class SetDTMF
         
                $this->app = $targetApp;
         }
+  
+  
+ public function SetParams($targetParams)
+        {
+            if( !empty( $targetParams ) )
+
+               $this->params = $targetParams;
+        }
         
         
   public function SetResult($targetResult)
@@ -60,10 +69,11 @@ class SetDTMF
         $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
         $jsonCause='"dtmftype": "'.$this->DTMFtype.'",';
         $jsonApp='"app": "'.$this->app.'",';
+        $jsonParams='"params": '.$this->params.',';
         $jsonResult='"result": "'.$this->result.'"';        
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonCause.$jsonApp.$jsonResult.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonCause.$jsonApp.$jsonParams.$jsonResult.$jsonEnd;
     }
     catch(exception $ex)
     {

@@ -11,6 +11,7 @@ class VoiceMail
     private $nexturl="http://192.168.1.195/IVR/end.php";
     private $app="";
     private $result="result_1234";
+    private $params="Params_Test";
     private $check="";
     private $authonly="";
     private $profile="";
@@ -43,7 +44,14 @@ class VoiceMail
         
                $this->result = $targetResult;
      
-        }     
+        } 
+  
+ public function SetParams($targetParams)
+        {
+            if( !empty( $targetParams ) )
+
+               $this->params = $targetParams;
+        }    
         
   public function SetCheckAccount($targetCheckAccount)
         {
@@ -98,6 +106,7 @@ class VoiceMail
         $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
         $jsonApp='"app": "'.$this->app.'",';
         $jsonResult='"result": "'.$this->result.'",';
+        $jsonParams='"params": '.$this->params.',';
         $jsonCheck='"check": "'.$this->check.'",';
         $jsonAuthOnly='"authonly": "'.$this->authonly.'",';
         $jsonProfile='"profile": "'.$this->profile.'",';
@@ -105,7 +114,7 @@ class VoiceMail
         $jsonId='"id": "'.$this->id.'"';
         $jsonEnd='}';
             
-        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonCheck.$jsonAuthOnly.$jsonProfile.$jsonDomain.$jsonId.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonCheck.$jsonAuthOnly.$jsonProfile.$jsonDomain.$jsonId.$jsonEnd;
     }
     catch(exception $ex)
     {

@@ -12,6 +12,7 @@ class DialNumber
     private $app="";
     private $result="result_1234";
     private $context="result_1234";
+    private $params="Params_Test";
     private $dialplan="test.xml";
     private $callername="5";
     private $callernumber="10";
@@ -42,6 +43,12 @@ class DialNumber
         
                 $this->result = $targetResult;
           
+        }
+   public function SetParams($targetParams)
+        {
+            if( !empty( $targetParams ) )
+
+               $this->params = $targetParams;
         }
         
   public function SetContext($targetContext)
@@ -102,6 +109,7 @@ class DialNumber
         $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
         $jsonApp='"app": "'.$this->app.'",';
         $jsonResult='"result": "'.$this->result.'",';
+        $jsonParams='"params": '.$this->params.',';
         $jsonContext='"context": "'.$this->context.'",';
         $jsonDialplan='"dialplan": "'.$this->dialplan.'",';
         $jsonCallerName='"callername": "'.$this->callername.'",';
@@ -109,7 +117,7 @@ class DialNumber
         $jsonNumber='"number": "'.$this->number.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonContext.$jsonDialplan.$jsonCallerName.$jsonCallerNumber.$jsonNumber.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonContext.$jsonDialplan.$jsonCallerName.$jsonCallerNumber.$jsonNumber.$jsonEnd;
     }
     catch(exception $ex)
     {

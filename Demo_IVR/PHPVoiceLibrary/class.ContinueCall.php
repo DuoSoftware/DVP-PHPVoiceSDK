@@ -11,6 +11,7 @@ class ContinueCall
     private $nexturl="http://192.168.1.195/IVR/end.php";
     private $app="";
     private $result="result_1234";
+    private $params="Params_Test";
 
       
     
@@ -37,6 +38,12 @@ class ContinueCall
         
                $this->result = $targetResult;
      
+        }
+  public function SetParams($targetParams)
+        {
+            if( !empty( $targetParams ) )
+
+               $this->params = $targetParams;
         }       
          
       
@@ -48,10 +55,11 @@ class ContinueCall
         $jsonAction='"action": "hangup",';
         $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
         $jsonApp='"app": "'.$this->app.'",';
+        $jsonParams='"params": '.$this->params.',';
         $jsonResult='"result": "'.$this->result.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonParams.$jsonResult.$jsonEnd;
     }
     catch(exception $ex)
     {

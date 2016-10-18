@@ -11,6 +11,7 @@ class RecordVoiceMessage
     private $nexturl="http://192.168.1.195/IVR/end.php";
     private $app="";
     private $result="result_1234";
+    private $params="Params_Test";
     private $errorFile="";
     private $digitTimeOut="5";
     private $inputTimeOut="10";
@@ -56,6 +57,13 @@ class RecordVoiceMessage
         
                $this->result = $targetResult;
      
+        } 
+  
+ public function SetParams($targetParams)
+        {
+            if( !empty( $targetParams ) )
+
+               $this->params = $targetParams;
         }
         
   public function SetErrorFile($targetErrorFile)
@@ -140,6 +148,7 @@ class RecordVoiceMessage
         $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
         $jsonApp='"app": "'.$this->app.'",';
         $jsonResult='"result": "'.$this->result.'",';
+        $jsonParams='"params": '.$this->params.',';
         $jsonErrorFile='"errorfile": "'.$this->errorFile.'",';
         $jsonDigitTimeOut='"digittimeout": "'.$this->digitTimeOut.'",';
         $jsonInputTimeOut='"inputtimeout": "'.$this->inputTimeOut.'",';
@@ -150,7 +159,7 @@ class RecordVoiceMessage
         $jsonDigits='"digits": "'.$this->digits.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonFile.$jsonNextUrl.$jsonApp.$jsonResult.$jsonErrorFile.$jsonDigitTimeOut.$jsonInputTimeOut.$jsonLimit.$jsonTerminator.$jsonStrip.$jsonPostUrl.$jsonDigits.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonFile.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonErrorFile.$jsonDigitTimeOut.$jsonInputTimeOut.$jsonLimit.$jsonTerminator.$jsonStrip.$jsonPostUrl.$jsonDigits.$jsonEnd;
     }
     catch(exception $ex)
     {

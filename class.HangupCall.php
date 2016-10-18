@@ -11,6 +11,7 @@ class HangupCall
     private $nexturl="http://192.168.1.195/IVR/end.php";
     private $app="";
     private $result="result_1234";
+    private $params="Params_Test";
     private $cause="timeout";
       
     
@@ -37,7 +38,14 @@ class HangupCall
         
                $this->result = $targetResult;
      
-        }       
+        } 
+        
+  public function SetParams($targetParams)
+        {
+            if( !empty( $targetParams ) )
+
+               $this->params = $targetParams;
+        }      
         
   public function SetHangupCause($targetHangupCause)
         {
@@ -58,10 +66,11 @@ class HangupCall
         $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
         $jsonApp='"app": "'.$this->app.'",';
         $jsonResult='"result": "'.$this->result.'",';
+        $jsonParams='"params": '.$this->params.',';
         $jsonCause='"cause": "'.$this->cause.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonCause.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonCause.$jsonEnd;
     }
     catch(exception $ex)
     {

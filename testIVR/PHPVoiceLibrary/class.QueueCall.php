@@ -11,6 +11,7 @@ class QueueCall
     private $nexturl="http://192.168.1.195/IVR/end.php";
     //private $posturl="http://192.168.1.195/IVR/end.php";
     private $result="result_1234";
+    private $params="Params_Test";
     private $skill="";
     private $profile="";
     
@@ -47,7 +48,14 @@ class QueueCall
         
                $this->result = $targetResult;
      
-        }     
+        }
+  
+ public function SetParams($targetParams)
+        {
+            if( !empty( $targetParams ) )
+
+               $this->params = $targetParams;
+        }    
         
   public function SetSkill ($targetSkill)
         {
@@ -68,10 +76,11 @@ class QueueCall
     $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
     $jsonProfile='"profile": "'.$this->profile.'",';
     $jsonResult='"result": "'.$this->result.'",';
+    $jsonParams='"params": '.$this->params.',';
     $jsonSkill='"skill": "'.$this->skill.'"';
     $jsonEnd='}';
     
-    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonProfile.$jsonResult.$jsonSkill.$jsonEnd;
+    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonProfile.$jsonResult.$jsonParams.$jsonSkill.$jsonEnd;
     }
     catch(exception $ex)
     {

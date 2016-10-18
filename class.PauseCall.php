@@ -11,6 +11,7 @@ class PauseCall
     private $nexturl="http://192.168.1.195/IVR/end.php";
     private $app="";
     private $result="result_1234";
+    private $params="Params_Test";
     private $errorFile="";
     private $digitTimeOut="5";
     private $inputTimeOut="10";
@@ -43,6 +44,13 @@ public function SetNextUrl($targetUrl)
             if( !empty( $targetResult ) )
 
                $this->result = $targetResult;          
+        }
+        
+ public function SetParams($targetParams)
+        {
+            if( !empty( $targetParams ) )
+
+               $this->params = $targetParams;
         }
         
   public function SeteErorfile($targetErrorFile)
@@ -120,6 +128,7 @@ public function SetNextUrl($targetUrl)
         $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
         $jsonApp='"app": "'.$this->app.'",';
         $jsonResult='"result": "'.$this->result.'",';
+        $jsonParams='"params": '.$this->params.',';
         $jsonErrorFile='"errorfile": "'.$this->errorFile.'",';
         $jsonDigitTimeOut='"digittimeout": "'.$this->digitTimeOut.'",';
         $jsonInputTimeOut='"inputtimeout": "'.$this->inputTimeOut.'",';
@@ -130,7 +139,7 @@ public function SetNextUrl($targetUrl)
         $jsonDigits='"digits": "'.$this->digits.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonErrorFile.$jsonDigitTimeOut.$jsonInputTimeOut.$jsonMilliSeconds.$jsonTerminator.$jsonStrip.$jsonDigits.$jsonMaxDigits.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonErrorFile.$jsonDigitTimeOut.$jsonInputTimeOut.$jsonMilliSeconds.$jsonTerminator.$jsonStrip.$jsonDigits.$jsonMaxDigits.$jsonEnd;
     }
     catch(exception $ex)
     {

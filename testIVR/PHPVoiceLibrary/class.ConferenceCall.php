@@ -11,6 +11,7 @@ class ConferenceCall
     private $nexturl="http://192.168.1.195/IVR/end.php";
     private $app="";
     private $result="result_1234";
+    private $params="Params_Test";
     private $profile="conf";
     private $data="11111";
     
@@ -38,6 +39,12 @@ class ConferenceCall
         
                $this->result = $targetResult;
      
+        }
+   public function SetParams($targetParams)
+        {
+            if( !empty( $targetParams ) )
+
+               $this->params = $targetParams;
         }
              
   public function SetProfile($targetProfile)
@@ -70,11 +77,12 @@ class ConferenceCall
         $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
         $jsonApp='"app": "'.$this->app.'",';
         $jsonResult='"result": "'.$this->result.'",';
+        $jsonParams='"params": '.$this->params.',';
         $jsonProfile='"profile": "'.$this->profile.'",';
         $jsonData='"data": "'.$this->data.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonProfile.$jsonData.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonProfile.$jsonData.$jsonEnd;
     }
     catch(exception $ex)
     {

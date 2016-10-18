@@ -14,6 +14,7 @@ class ContinueCall
     private $dnis="";
     private $name="";
     private $result="result_1234";
+    private $params="Params_Test";
 
     
   public function SetSession($targetSession)
@@ -60,7 +61,13 @@ class ContinueCall
         
                $this->result = $targetResult;
      
-        }       
+        } 
+  public function SetParams($targetParams)
+        {
+            if( !empty( $targetParams ) )
+
+               $this->params = $targetParams;
+        }      
          
       
   function GetResult()
@@ -73,10 +80,11 @@ class ContinueCall
         $jsonAni='"ani": "'.$this->ani.'",';
         $jsonDnis='"dnis": "'.$this->dnis.'",';
         $jsonName='"name": "'.$this->name.'",';
+        $jsonParams='"params": '.$this->params.',';
         $jsonResult='"result": "'.$this->result.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonSession.$jsonDirection.$jsonAni.$jsonDnis.$jsonName.$jsonResult.$jsonEnd;
+        return $jsonStart.$jsonSession.$jsonDirection.$jsonAni.$jsonDnis.$jsonName.$jsonParams.$jsonResult.$jsonEnd;
     }
     catch(exception $ex)
     {
