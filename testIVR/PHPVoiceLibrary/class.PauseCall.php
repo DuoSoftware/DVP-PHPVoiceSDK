@@ -11,7 +11,7 @@ class PauseCall
     private $nexturl="http://192.168.1.195/IVR/end.php";
     private $app="";
     private $result="result_1234";
-    private $params="Params_Test";
+    private $params='{"Params_Test":"test"}';
     private $errorFile="";
     private $digitTimeOut="5";
     private $inputTimeOut="10";

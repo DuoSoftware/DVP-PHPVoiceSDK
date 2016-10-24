@@ -14,7 +14,7 @@ class ContinueCall
     private $dnis="";
     private $name="";
     private $result="result_1234";
-    private $params="Params_Test";
+    private $params='{"Params_Test":"test"}';
 
     
   public function SetSession($targetSession)

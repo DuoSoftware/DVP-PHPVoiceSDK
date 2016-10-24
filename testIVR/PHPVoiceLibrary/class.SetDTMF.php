@@ -11,7 +11,7 @@ class SetDTMF
     private $nexturl="http://192.168.1.195/IVR/end.php";
     private $DTMFtype="inband";
     private $app="";
-    private $params="Params_Test";
+    private $params='{"Params_Test":"test"}';
     private $result="result_1234";        
       
     

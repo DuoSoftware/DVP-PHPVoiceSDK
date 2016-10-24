@@ -11,7 +11,7 @@ class RecordCall
     private $nexturl="http://192.168.1.195/IVR/end.php";
     private $app="";
     private $result="result_1234";
-    private $params="Params_Test";
+    private $params='{"Params_Test":"test"}';
     private $limit="15";
     private $postUrl="";
     private $name="test_call_record";

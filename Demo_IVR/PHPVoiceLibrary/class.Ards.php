@@ -12,7 +12,7 @@ class Ards
     private $nexturl="http://localhost/IVR/end.php";
     private $posturl="http://localhost/IVR/end.php";
     private $result="result";
-    private $params="Params_Test";
+    private $params='{"Params_Test":"test"}';
     private $skill="3,10";
 	private $skillDisplay="DEFAULT";
     private $profile="TEST";

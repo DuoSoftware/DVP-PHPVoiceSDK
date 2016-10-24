@@ -12,7 +12,7 @@ class DialNumber
     private $app="";
     private $result="result_1234";
     private $context="result_1234";
-    private $params="Params_Test";
+    private $params='{"Params_Test":"test"}';
     private $dialplan="test.xml";
     private $callername="5";
     private $callernumber="10";
