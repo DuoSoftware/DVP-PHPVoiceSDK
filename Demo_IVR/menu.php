@@ -34,7 +34,7 @@
 	$nextFile="ProcessStartMenu.php";
 	$nextURL="ProcessStartMenu.php";
 
-	$objPlayFile->SetFile("Duo_IVR_Menu.wav");
+	$objPlayFile->SetFile("IVR_Menu.wav");
 	$objPlayFile->SetNextUrl($nextFile);
 	$objPlayFile->SetResult("result");
 	$objPlayFile->SetErrorFile("");
