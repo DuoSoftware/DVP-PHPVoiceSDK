@@ -12,10 +12,12 @@ class VoiceMail
     private $app="";
     private $result="result_1234";
     private $params='{"Params_Test":"test"}';
+    private $display="DEFAULT";
     private $check="";
     private $authonly="";
     private $profile="";
     private $domain="";
+    private $eventlog="false";
     private $id="";
     
 
@@ -51,6 +53,15 @@ class VoiceMail
             if( !empty( $targetParams ) )
 
                $this->params = $targetParams;
+        }
+        
+    public function SetDisplay($targetDisplay)
+        {
+
+            if( !empty( $targetDisplay ) )
+
+                $this->display = $targetDisplay;
+
         }    
         
   public function SetCheckAccount($targetCheckAccount)
@@ -86,6 +97,14 @@ class VoiceMail
                $this->domain = $targetDomain;
         }
         
+  public function SetEventLog($targetEventLog)
+        {
+
+            if( !empty( $targetEventLog ) )
+
+                $this->eventlog = $targetEventLog;
+        }
+        
   public function SetVoiceMailId($targetVoiceMailId)
         {
         
@@ -107,14 +126,16 @@ class VoiceMail
         $jsonApp='"app": "'.$this->app.'",';
         $jsonResult='"result": "'.$this->result.'",';
         $jsonParams='"params": '.$this->params.',';
+        $jsonDisplay='"display": "'.$this->display.'",';
         $jsonCheck='"check": "'.$this->check.'",';
         $jsonAuthOnly='"authonly": "'.$this->authonly.'",';
         $jsonProfile='"profile": "'.$this->profile.'",';
         $jsonDomain='"domain": "'.$this->domain.'",';
+        $jsonEventLog='"eventlog": "'.$this->eventlog.'",';
         $jsonId='"id": "'.$this->id.'"';
         $jsonEnd='}';
             
-        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonCheck.$jsonAuthOnly.$jsonProfile.$jsonDomain.$jsonId.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonDisplay.$jsonCheck.$jsonAuthOnly.$jsonProfile.$jsonDomain.$jsonEventLog.$jsonId.$jsonEnd;
     }
     catch(exception $ex)
     {

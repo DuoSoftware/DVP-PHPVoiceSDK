@@ -12,6 +12,7 @@ class Say
     private $app="";
     private $result="result_1234";
     private $params='{"Params_Test":"test"}';
+    private $display="DEFAULT";
     private $errorFile="";
     private $digitTimeOut="5";
     private $inputTimeOut="10";
@@ -23,6 +24,7 @@ class Say
     private $terminator="*";
     private $strip="*";
     private $digits="9";
+    private $eventlog=false;
     private $maxdigits="";
     
     
@@ -69,6 +71,15 @@ class Say
             if( !empty( $targetParams ) )
 
                $this->params = $targetParams;
+        }
+        
+  public function SetDisplay($targetDisplay)
+        {
+
+            if( !empty( $targetDisplay ) )
+
+                $this->display = $targetDisplay;
+
         }
         
   public function SetErrorFile($targetErrorFile)
@@ -169,6 +180,14 @@ class Say
   
         }
         
+   public function SetEventLog($targetEventLog)
+        {
+
+            if( !empty( $targetEventLog ) )
+
+                $this->eventlog = $targetEventLog;
+        }
+        
   public function SetMaxDigits($targetMaxDigits)
         {       
             if( !empty( $targetMaxDigits ) )
@@ -187,6 +206,7 @@ class Say
         $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
         $jsonApp='"app": "'.$this->app.'",';
         $jsonParams='"params": '.$this->params.',';
+        $jsonDisplay='"display": "'.$this->display.'",';
         $jsonResult='"result": "'.$this->result.'",';
         $jsonErrorFile='"errorfile": "'.$this->errorFile.'",';
         $jsonDigitTimeOut='"digittimeout": "'.$this->digitTimeOut.'",';
@@ -199,10 +219,11 @@ class Say
         $jsonTerminator='"terminator": "'.$this->terminator.'",';
         $jsonStrip='"strip": "'.$this->strip.'",';
         $jsonMaxDigits='"maxdigits": "'.$this->maxdigit.'",';
+        $jsonEventLog='"eventlog": "'.$this->eventlog.'",';
         $jsonDigits='"digits": "'.$this->digits.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonFile.$jsonNextUrl.$jsonApp.$jsonParams.$jsonResult.$jsonErrorFile.$jsonDigitTimeOut.$jsonInputTimeOut.$jsonLoops.$jsonLanguage.$jsonType.$jsonMethod.$jsonGender.$jsonTerminator.$jsonStrip.$jsonDigits.$jsonMaxDigits.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonFile.$jsonNextUrl.$jsonApp.$jsonParams.$jsonDisplay.$jsonResult.$jsonErrorFile.$jsonDigitTimeOut.$jsonInputTimeOut.$jsonLoops.$jsonLanguage.$jsonType.$jsonMethod.$jsonGender.$jsonTerminator.$jsonStrip.$jsonEventLog.$jsonDigits.$jsonMaxDigits.$jsonEnd;
     }
     catch(exception $ex)
     {

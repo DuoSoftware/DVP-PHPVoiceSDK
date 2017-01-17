@@ -13,9 +13,11 @@ class DialNumber
     private $result="result_1234";
     private $context="result_1234";
     private $params='{"Params_Test":"test"}';
+    private $display="DEFAULT";
     private $dialplan="test.xml";
     private $callername="5";
     private $callernumber="10";
+    private $eventlog=false;
     private $number="10000";
     
      
@@ -49,6 +51,15 @@ class DialNumber
             if( !empty( $targetParams ) )
 
                $this->params = $targetParams;
+        }
+        
+   public function SetDisplay($targetDisplay)
+        {
+
+            if( !empty( $targetDisplay ) )
+
+                $this->display = $targetDisplay;
+
         }
         
   public function SetContext($targetContext)
@@ -87,6 +98,14 @@ class DialNumber
  
         }
         
+  public function SetEventLog($targetEventLog)
+        {
+
+            if( !empty( $targetEventLog ) )
+
+                $this->eventlog = $targetEventLog;
+        }
+        
   public function SetNumber($targetNumber)
         {
         
@@ -110,14 +129,16 @@ class DialNumber
         $jsonApp='"app": "'.$this->app.'",';
         $jsonResult='"result": "'.$this->result.'",';
         $jsonParams='"params": '.$this->params.',';
+        $jsonDisplay='"display": "'.$this->display.'",';
         $jsonContext='"context": "'.$this->context.'",';
         $jsonDialplan='"dialplan": "'.$this->dialplan.'",';
         $jsonCallerName='"callername": "'.$this->callername.'",';
         $jsonCallerNumber='"callernumber": "'.$this->callernumber.'",';
+        $jsonEventLog='"eventlog": "'.$this->eventlog.'",';
         $jsonNumber='"number": "'.$this->number.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonContext.$jsonDialplan.$jsonCallerName.$jsonCallerNumber.$jsonNumber.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonDisplay.$jsonContext.$jsonDialplan.$jsonCallerName.$jsonCallerNumber.$jsonEventLog.$jsonNumber.$jsonEnd;
     }
     catch(exception $ex)
     {

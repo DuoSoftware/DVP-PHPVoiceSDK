@@ -13,9 +13,11 @@ class Ards
     private $posturl="http://localhost/IVR/end.php";
     private $result="result";
     private $params='{"Params_Test":"test"}';
+    private $display="DEFAULT";
     private $skill="3,10";
 	private $skillDisplay="DEFAULT";
     private $profile="TEST";
+    private $eventlog=false;
     private $company="3";
     private $tenant="1";
       
@@ -52,6 +54,15 @@ class Ards
                $this->params = $targetParams;
         } 
         
+  public function SetDisplay($targetDisplay)
+        {
+
+            if( !empty( $targetDisplay ) )
+
+                $this->display = $targetDisplay;
+
+        }
+        
   public function SetSkill($targetSkill)
         {
         
@@ -78,6 +89,14 @@ class Ards
         
                 $this->profile = $targetProfile;
       
+        }
+        
+   public function SetEventLog($targetEventLog)
+        {
+
+            if( !empty( $targetEventLog ) )
+
+                $this->eventlog = $targetEventLog;
         }
   
    public function SetCompany($targetCompany)
@@ -109,14 +128,16 @@ class Ards
     $jsonPostUrl='"posturl": "'.$this->posturl.'",';
     $jsonResult='"result": "'.$this->result.'",';
     $jsonParams='"params": '.$this->params.',';
+    $jsonDisplay='"display": "'.$this->display.'",';
     $jsonSkill='"skill": "'.$this->skill.'",';
 	$jsonSkillDisplay='"skilldisplay": "'.$this->skillDisplay.'",';
     $jsonProfile='"profile": "'.$this->profile.'",';
+    $jsonEventLog='"eventlog": "'.$this->eventlog.'",';
     $jsonCompany='"company": "'.$this->company.'",';
     $jsonTenant='"tenant": "'.$this->tenant.'"';
     $jsonEnd='}';
     
-    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonPostUrl.$jsonResult.$jsonParams.$jsonSkill.$jsonSkillDisplay.$jsonProfile.$jsonCompany.$jsonTenant.$jsonEnd;
+    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonPostUrl.$jsonResult.$jsonParams.$jsonDisplay.$jsonSkill.$jsonSkillDisplay.$jsonProfile.$jsonEventLog.$jsonCompany.$jsonTenant.$jsonEnd;
     }
     catch(exception $ex)
     {
