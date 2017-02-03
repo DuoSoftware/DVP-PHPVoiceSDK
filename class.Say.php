@@ -4,10 +4,10 @@
  * @author achintha
  * @copyright 2014
  */
-
+//
 class Say
 {
-    private $file="Duo_IVR_Menu_1.wav";
+    private $file="12345";
     private $nexturl="http://192.168.1.195/IVR/end.php";
     private $app="";
     private $result="result_1234";
@@ -17,7 +17,7 @@ class Say
     private $digitTimeOut="5";
     private $inputTimeOut="10";
     private $loops="3";
-    private $language="english";
+    private $language="en";
     private $type="English";
     private $method="";
     private $gender="";
@@ -223,7 +223,7 @@ class Say
         $jsonDigits='"digits": "'.$this->digits.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonFile.$jsonNextUrl.$jsonApp.$jsonParams.$jsonDisplay.$jsonResult.$jsonErrorFile.$jsonDigitTimeOut.$jsonInputTimeOut.$jsonLoops.$jsonLanguage.$jsonType.$jsonMethod.$jsonGender.$jsonTerminator.$jsonStrip.$jsonEventLog.$jsonDigits.$jsonMaxDigits.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonFile.$jsonNextUrl.$jsonApp.$jsonParams.$jsonDisplay.$jsonResult.$jsonErrorFile.$jsonDigitTimeOut.$jsonInputTimeOut.$jsonLoops.$jsonLanguage.$jsonType.$jsonMethod.$jsonGender.$jsonTerminator.$jsonStrip.$jsonEventLog.$jsonMaxDigits.$jsonDigits.$jsonEnd;
     }
     catch(exception $ex)
     {
