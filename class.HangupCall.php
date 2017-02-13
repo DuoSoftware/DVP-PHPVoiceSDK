@@ -12,6 +12,8 @@ class HangupCall
     private $app="";
     private $result="result_1234";
     private $params='{"Params_Test":"test"}';
+    private $display="DEFAULT";
+    private $eventlog=false;
     private $cause="timeout";
       
     
@@ -45,7 +47,23 @@ class HangupCall
             if( !empty( $targetParams ) )
 
                $this->params = $targetParams;
-        }      
+        }
+  
+  public function SetDisplay($targetDisplay)
+        {
+
+            if( !empty( $targetDisplay ) )
+
+                $this->display = $targetDisplay;
+
+        } 
+   public function SetEventLog($targetEventLog)
+        {
+
+            if( !empty( $targetEventLog ) )
+
+                $this->eventlog = $targetEventLog;
+        }     
         
   public function SetHangupCause($targetHangupCause)
         {
@@ -67,10 +85,12 @@ class HangupCall
         $jsonApp='"app": "'.$this->app.'",';
         $jsonResult='"result": "'.$this->result.'",';
         $jsonParams='"params": '.$this->params.',';
+        $jsonDisplay='"display": "'.$this->display.'",';
+        $jsonEventLog='"eventlog": "'.$this->eventlog.'",';
         $jsonCause='"cause": "'.$this->cause.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonCause.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonDisplay.$jsonEventLog.$jsonCause.$jsonEnd;
     }
     catch(exception $ex)
     {

@@ -12,8 +12,10 @@ class RecordCall
     private $app="";
     private $result="result_1234";
     private $params='{"Params_Test":"test"}';
+    private $display="DEFAULT";
     private $limit="15";
     private $postUrl="";
+    private $eventlog=false;
     private $name="test_call_record";
     
     
@@ -48,6 +50,15 @@ class RecordCall
             if( !empty( $targetParams ) )
 
                $this->params = $targetParams;
+        }
+        
+  public function SetDisplay($targetDisplay)
+        {
+
+            if( !empty( $targetDisplay ) )
+
+                $this->display = $targetDisplay;
+
         }  
         
   public function SetLimit($targetLimit)
@@ -65,6 +76,14 @@ class RecordCall
         
                $this->strip = $targetPostUrl;
 
+        }
+
+  public function SetEventLog($targetEventLog)
+        {
+
+            if( !empty( $targetEventLog ) )
+
+                $this->eventlog = $targetEventLog;
         }
         
   public function SetName($targetName)
@@ -86,12 +105,14 @@ class RecordCall
         $jsonApp='"app": "'.$this->app.'",';
         $jsonResult='"result": "'.$this->result.'",';
         $jsonParams='"params": '.$this->params.',';
+        $jsonDisplay='"display": "'.$this->display.'",';
         $jsonlimit='"limit": "'.$this->limit.'",';
         $jsonPostUrl='"posturl": "'.$this->postUrl.'",';
+        $jsonEventLog='"eventlog": "'.$this->eventlog.'",';
         $jsonName='"name": "'.$this->name.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonlimit.$jsonPostUrl.$jsonName.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonDisplay.$jsonlimit.$jsonPostUrl.$jsonEventLog.$jsonName.$jsonEnd;
     }
     catch(exception $ex)
     {

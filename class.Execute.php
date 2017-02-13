@@ -12,7 +12,9 @@ class Execute
     private $app="";
     private $result="result_1234";
     private $params='{"Params_Test":"test"}';
+    private $display="DEFAULT";
     private $application="";
+    private $eventlog=false;
     private $data="";
       
     
@@ -50,6 +52,15 @@ class Execute
                $this->params = $targetParams;
         }
         
+  public function SetDisplay($targetDisplay)
+        {
+
+            if( !empty( $targetDisplay ) )
+
+                $this->display = $targetDisplay;
+
+        }
+        
    public function SetApplication($targetApplication)
         {        
             if( !empty( $targetApplication ) )
@@ -57,7 +68,14 @@ class Execute
                $this->app = $targetApplication;
         }
         
-        
+   public function SetEventLog($targetEventLog)
+        {
+
+            if( !empty( $targetEventLog ) )
+
+                $this->eventlog = $targetEventLog;
+        }
+  
   public function SetData($targetData)
         {
         
@@ -78,11 +96,13 @@ class Execute
         $jsonApp='"app": "'.$this->app.'",';
         $jsonResult='"result": "'.$this->result.'",';
         $jsonParams='"params": '.$this->params.',';
+        $jsonDisplay='"display": "'.$this->display.'",';
         $jsonApplication='"application": "'.$this->application.'",';
+        $jsonEventLog='"eventlog": "'.$this->eventlog.'",';
         $jsonData='"data": "'.$this->data.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonApplication.$jsonData.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonDisplay.$jsonApplication.$jsonEventLog.$jsonData.$jsonEnd;
     }
     catch(exception $ex)
     {

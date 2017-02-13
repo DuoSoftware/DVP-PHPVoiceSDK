@@ -15,6 +15,8 @@ class ContinueCall
     private $name="";
     private $result="result_1234";
     private $params='{"Params_Test":"test"}';
+    private $eventlog=false;
+    private $display="DEFAULT";
 
     
   public function SetSession($targetSession)
@@ -67,7 +69,24 @@ class ContinueCall
             if( !empty( $targetParams ) )
 
                $this->params = $targetParams;
-        }      
+        } 
+
+  public function SetEventLog($targetEventLog)
+        {
+
+            if( !empty( $targetEventLog ) )
+
+                $this->eventlog = $targetEventLog;
+        }
+  
+  public function SetDisplay($targetDisplay)
+        {
+
+            if( !empty( $targetDisplay ) )
+
+                $this->display = $targetDisplay;
+
+        }     
          
       
   function GetResult()
@@ -81,10 +100,12 @@ class ContinueCall
         $jsonDnis='"dnis": "'.$this->dnis.'",';
         $jsonName='"name": "'.$this->name.'",';
         $jsonParams='"params": '.$this->params.',';
+        $jsonEventLog='"eventlog": "'.$this->eventlog.'",';
+        $jsonDisplay='"display": "'.$this->display.'",';
         $jsonResult='"result": "'.$this->result.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonSession.$jsonDirection.$jsonAni.$jsonDnis.$jsonName.$jsonParams.$jsonResult.$jsonEnd;
+        return $jsonStart.$jsonSession.$jsonDirection.$jsonAni.$jsonDnis.$jsonName.$jsonParams.$jsonEventLog.$jsonDisplay.$jsonResult.$jsonEnd;
     }
     catch(exception $ex)
     {
