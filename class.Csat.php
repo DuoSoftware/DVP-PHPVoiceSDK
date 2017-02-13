@@ -6,17 +6,15 @@
  */
 
 
-class Ards
+class Csat
 {
    // private $file="TestRecord_1.wav";
     private $nexturl="http://localhost/IVR/end.php";
-    private $posturl="http://localhost/IVR/end.php";
     private $result="result";
     private $params='{"Params_Test":"test"}';
-    private $display="DEFAULT";
-    private $skill="3,10";
-	private $skillDisplay="DEFAULT";
-    private $profile="TEST";
+    private $display="";
+	private $satisfaction="good";
+	private $comment="";
     private $eventlog=false;
     private $company="3";
     private $tenant="1";
@@ -31,13 +29,6 @@ class Ards
        
         }
    
-   public function SetPostUrl($targetPostUrl)
-        {        
-            if( !empty( $targetPostUrl ) )
-        
-               $this->posturl = $targetPostUrl;
-        }
-             
   public function SetResult($targetResult)
         {
         
@@ -62,36 +53,26 @@ class Ards
                 $this->display = $targetDisplay;
 
         }
-        
-  public function SetSkill($targetSkill)
+		
+   public function SetSatisfaction($targetSatisfaction)
         {
-        
-            if( !empty( $targetSkill ) )
-        
-                $this->skill = $targetSkill;
-      
+
+            if( !empty( $targetSatisfaction ) )
+
+                $this->satisfaction = $targetSatisfaction;
+
         }
 		
-  public function SetSkillDisplay($targetSkillDisplay)
+   public function SetComment($comment)
         {
 
-            if( !empty( $targetSkillDisplay ) )
+            if( !empty( $comment ) )
 
-                $this->skillDisplay = $targetSkillDisplay;
+                $this->comment = $comment;
 
         }
-
-  
-   public function SetProfile($targetProfile)
-        {
         
-            if( !empty( $targetProfile ) )
-        
-                $this->profile = $targetProfile;
-      
-        }
-        
-   public function SetEventLog($targetEventLog)
+ public function SetEventLog($targetEventLog)
         {
 
             if( !empty( $targetEventLog ) )
@@ -123,21 +104,19 @@ class Ards
     try
     {
     $jsonStart='{';
-    $jsonAction='"action": "ards",';
+    $jsonAction='"action": "csat",';
     $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
-    $jsonPostUrl='"posturl": "'.$this->posturl.'",';
     $jsonResult='"result": "'.$this->result.'",';
     $jsonParams='"params": '.$this->params.',';
     $jsonDisplay='"display": "'.$this->display.'",';
-    $jsonSkill='"skill": "'.$this->skill.'",';
-	$jsonSkillDisplay='"skilldisplay": "'.$this->skillDisplay.'",';
-    $jsonProfile='"profile": "'.$this->profile.'",';
+	$jsonSatisfaction='"satisfaction": "'.$this->satisfaction.'",';
+	$jsonComment='"comment": "'.$this->comment.'",';
     $jsonEventLog='"eventlog": "'.$this->eventlog.'",';
     $jsonCompany='"company": "'.$this->company.'",';
     $jsonTenant='"tenant": "'.$this->tenant.'"';
     $jsonEnd='}';
     
-    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonPostUrl.$jsonResult.$jsonParams.$jsonDisplay.$jsonSkill.$jsonSkillDisplay.$jsonProfile.$jsonEventLog.$jsonCompany.$jsonTenant.$jsonEnd;
+    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonResult.$jsonParams.$jsonDisplay.$jsonSatisfaction.$jsonComment.$jsonEventLog.$jsonCompany.$jsonTenant.$jsonEnd;
     }
     catch(exception $ex)
     {

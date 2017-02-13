@@ -12,6 +12,8 @@ class SetDTMF
     private $DTMFtype="inband";
     private $app="";
     private $params='{"Params_Test":"test"}';
+    private $display="DEFAULT";
+    private $eventlog=false;
     private $result="result_1234";        
       
     
@@ -33,6 +35,13 @@ class SetDTMF
                 $this->DTMFtype = $targetDTMFType;
           
         }
+   public function SetEventLog($targetEventLog)
+        {
+
+            if( !empty( $targetEventLog ) )
+
+                $this->eventlog = $targetEventLog;
+        }
         
   public function SetApp($targetApp)
         {        
@@ -48,7 +57,15 @@ class SetDTMF
 
                $this->params = $targetParams;
         }
-        
+
+  public function SetDisplay($targetDisplay)
+        {
+
+            if( !empty( $targetDisplay ) )
+
+                $this->display = $targetDisplay;
+
+        }
         
   public function SetResult($targetResult)
         {
@@ -70,10 +87,12 @@ class SetDTMF
         $jsonCause='"dtmftype": "'.$this->DTMFtype.'",';
         $jsonApp='"app": "'.$this->app.'",';
         $jsonParams='"params": '.$this->params.',';
+        $jsonDisplay='"display": "'.$this->display.'",';
+        $jsonEventLog='"eventlog": "'.$this->eventlog.'",';
         $jsonResult='"result": "'.$this->result.'"';        
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonCause.$jsonApp.$jsonParams.$jsonResult.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonCause.$jsonApp.$jsonParams.$jsonDisplay.$jsonEventLog.$jsonResult.$jsonEnd;
     }
     catch(exception $ex)
     {

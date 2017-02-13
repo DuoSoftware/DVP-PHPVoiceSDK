@@ -12,6 +12,8 @@ class ContinueCall
     private $app="";
     private $result="result_1234";
     private $params='{"Params_Test":"test"}';
+    private $eventlog=false;
+    private $display="DEFAULT";
 
       
     
@@ -44,6 +46,23 @@ class ContinueCall
             if( !empty( $targetParams ) )
 
                $this->params = $targetParams;
+        }
+        
+ public function SetEventLog($targetEventLog)
+        {
+
+            if( !empty( $targetEventLog ) )
+
+                $this->eventlog = $targetEventLog;
+        }
+        
+  public function SetDisplay($targetDisplay)
+        {
+
+            if( !empty( $targetDisplay ) )
+
+                $this->display = $targetDisplay;
+
         }       
          
       
@@ -56,10 +75,12 @@ class ContinueCall
         $jsonNextUrl='"nexturl": "'.$this->nexturl.'",';
         $jsonApp='"app": "'.$this->app.'",';
         $jsonParams='"params": '.$this->params.',';
+        $jsonEventLog='"eventlog": "'.$this->eventlog.'",';
+        $jsonDisplay='"display": "'.$this->display.'",';
         $jsonResult='"result": "'.$this->result.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonParams.$jsonResult.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonParams.$jsonEventLog.$jsonDisplay.$jsonResult.$jsonEnd;
     }
     catch(exception $ex)
     {

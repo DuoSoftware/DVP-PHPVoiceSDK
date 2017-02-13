@@ -12,7 +12,9 @@ class ConferenceCall
     private $app="";
     private $result="result_1234";
     private $params='{"Params_Test":"test"}';
+    private $display="DEFAULT";
     private $profile="conf";
+    private $eventlog=false;
     private $data="11111";
     
     
@@ -46,6 +48,15 @@ class ConferenceCall
 
                $this->params = $targetParams;
         }
+
+  public function SetDisplay($targetDisplay)
+        {
+
+            if( !empty( $targetDisplay ) )
+
+                $this->display = $targetDisplay;
+
+        }
              
   public function SetProfile($targetProfile)
         {
@@ -54,6 +65,14 @@ class ConferenceCall
         
                $this->profile = $targetProfile;
           
+        }
+        
+   public function SetEventLog($targetEventLog)
+        {
+
+            if( !empty( $targetEventLog ) )
+
+                $this->eventlog = $targetEventLog;
         }
         
   public function SetData($targetData)
@@ -78,11 +97,13 @@ class ConferenceCall
         $jsonApp='"app": "'.$this->app.'",';
         $jsonResult='"result": "'.$this->result.'",';
         $jsonParams='"params": '.$this->params.',';
+        $jsonDisplay='"display": "'.$this->display.'",';
         $jsonProfile='"profile": "'.$this->profile.'",';
+        $jsonEventLog='"eventlog": "'.$this->eventlog.'",';
         $jsonData='"data": "'.$this->data.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonProfile.$jsonData.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonDisplay.$jsonProfile.$jsonEventLog.$jsonData.$jsonEnd;
     }
     catch(exception $ex)
     {

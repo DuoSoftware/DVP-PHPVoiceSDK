@@ -12,12 +12,14 @@ class PlayFile
     private $app="";
     private $result="result_1234";
     private $params='{"Params_Test":"test"}';
+    private $display="DEFAULT";
     private $errorFile="";
     private $digitTimeOut="5";
     private $inputTimeOut="10";
     private $loops="3";
     private $terminator="*";
     private $strip="*";
+    private $eventlog=false;
     private $digits="9";
     
     
@@ -64,6 +66,15 @@ class PlayFile
             if( !empty( $targetParams ) )
 
                $this->params = $targetParams;
+        }
+        
+  public function SetDisplay($targetDisplay)
+        {
+
+            if( !empty( $targetDisplay ) )
+
+                $this->display = $targetDisplay;
+
         }
         
   public function SetErrorFile($targetErrorFile)
@@ -116,6 +127,14 @@ class PlayFile
                 $this->strip = $targetStrip;  
         }
         
+    public function SetEventLog($targetEventLog)
+        {
+
+            if( !empty( $targetEventLog ) )
+
+                $this->eventlog = $targetEventLog;
+        }
+        
    public function SetDigits($targetDigits)
         {
         
@@ -136,16 +155,18 @@ class PlayFile
         $jsonApp='"app": "'.$this->app.'",';
         $jsonResult='"result": "'.$this->result.'",';
         $jsonParams='"params": '.$this->params.',';
+        $jsonDisplay='"display": "'.$this->display.'",';
         $jsonErrorFile='"errorfile": "'.$this->errorFile.'",';
         $jsonDigitTimeOut='"digittimeout": "'.$this->digitTimeOut.'",';
         $jsonInputTimeOut='"inputtimeout": "'.$this->inputTimeOut.'",';
         $jsonLoops='"loops": "'.$this->loops.'",';
         $jsonTerminator='"terminator": "'.$this->terminator.'",';
         $jsonStrip='"strip": "'.$this->strip.'",';
+        $jsonEventLog='"eventlog": "'.$this->eventlog.'",';
         $jsonDigits='"digits": "'.$this->digits.'"';
         $jsonEnd='}';
         
-        return $jsonStart.$jsonAction.$jsonFile.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonErrorFile.$jsonDigitTimeOut.$jsonInputTimeOut.$jsonLoops.$jsonTerminator.$jsonStrip.$jsonDigits.$jsonEnd;
+        return $jsonStart.$jsonAction.$jsonFile.$jsonNextUrl.$jsonApp.$jsonResult.$jsonParams.$jsonDisplay.$jsonErrorFile.$jsonDigitTimeOut.$jsonInputTimeOut.$jsonLoops.$jsonTerminator.$jsonStrip.$jsonEventLog.$jsonDigits.$jsonEnd;
     }
     catch(exception $ex)
     {

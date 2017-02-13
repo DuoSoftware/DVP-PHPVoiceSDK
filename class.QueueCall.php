@@ -12,7 +12,9 @@ class QueueCall
     //private $posturl="http://192.168.1.195/IVR/end.php";
     private $result="result_1234";
     private $params='{"Params_Test":"test"}';
+    private $display="DEFAULT";
     private $skill="";
+    private $eventlog=false;
     private $profile="";
     
       
@@ -55,6 +57,22 @@ class QueueCall
             if( !empty( $targetParams ) )
 
                $this->params = $targetParams;
+        }
+        
+  public function SetDisplay($targetDisplay)
+        {
+
+            if( !empty( $targetDisplay ) )
+
+                $this->display = $targetDisplay;
+
+        }
+   public function SetEventLog($targetEventLog)
+        {
+
+            if( !empty( $targetEventLog ) )
+
+                $this->eventlog = $targetEventLog;
         }    
         
   public function SetSkill ($targetSkill)
@@ -77,10 +95,12 @@ class QueueCall
     $jsonProfile='"profile": "'.$this->profile.'",';
     $jsonResult='"result": "'.$this->result.'",';
     $jsonParams='"params": '.$this->params.',';
+    $jsonDisplay='"display": "'.$this->display.'",';
+    $jsonEventLog='"eventlog": "'.$this->eventlog.'",';
     $jsonSkill='"skill": "'.$this->skill.'"';
     $jsonEnd='}';
     
-    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonProfile.$jsonResult.$jsonParams.$jsonSkill.$jsonEnd;
+    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonProfile.$jsonResult.$jsonParams.$jsonDisplay.$jsonEventLog.$jsonSkill.$jsonEnd;
     }
     catch(exception $ex)
     {
