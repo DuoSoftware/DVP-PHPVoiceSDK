@@ -17,6 +17,7 @@ class Ards
     private $skill="3,10";
 	private $skillDisplay="DEFAULT";
     private $profile="TEST";
+	private $priority="0";
     private $eventlog=false;
     private $company="3";
     private $tenant="1";
@@ -90,6 +91,15 @@ class Ards
                 $this->profile = $targetProfile;
       
         }
+		
+	   public function SetPriority($targetPriority)
+        {
+        
+            if( !empty( $targetPriority ) )
+        
+                $this->priority = $targetPriority;
+      
+        }
         
    public function SetEventLog($targetEventLog)
         {
@@ -132,12 +142,13 @@ class Ards
     $jsonSkill='"skill": "'.$this->skill.'",';
 	$jsonSkillDisplay='"skilldisplay": "'.$this->skillDisplay.'",';
     $jsonProfile='"profile": "'.$this->profile.'",';
+	$jsonPriority='"priority": "'.$this->priority.'",';
     $jsonEventLog='"eventlog": "'.$this->eventlog.'",';
     $jsonCompany='"company": "'.$this->company.'",';
     $jsonTenant='"tenant": "'.$this->tenant.'"';
     $jsonEnd='}';
     
-    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonPostUrl.$jsonResult.$jsonParams.$jsonDisplay.$jsonSkill.$jsonSkillDisplay.$jsonProfile.$jsonEventLog.$jsonCompany.$jsonTenant.$jsonEnd;
+    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonPostUrl.$jsonResult.$jsonParams.$jsonDisplay.$jsonSkill.$jsonSkillDisplay.$jsonProfile.$jsonPriority.$jsonEventLog.$jsonCompany.$jsonTenant.$jsonEnd;
     }
     catch(exception $ex)
     {
