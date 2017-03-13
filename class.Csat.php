@@ -14,6 +14,7 @@ class Csat
     private $params='{"Params_Test":"test"}';
     private $display="";
 	private $satisfaction="good";
+	private $profile="TEST";
 	private $comment="";
     private $eventlog=false;
     private $company="3";
@@ -63,6 +64,16 @@ class Csat
 
         }
 		
+	public function SetProfile($targetProfile)
+        {
+
+            if( !empty( $targetProfile ) )
+
+                $this->profile = $targetProfile;
+
+        }
+
+		
    public function SetComment($comment)
         {
 
@@ -110,13 +121,14 @@ class Csat
     $jsonParams='"params": '.$this->params.',';
     $jsonDisplay='"display": "'.$this->display.'",';
 	$jsonSatisfaction='"satisfaction": "'.$this->satisfaction.'",';
+	$jsonProfile='"profile": "'.$this->profile.'",';
 	$jsonComment='"comment": "'.$this->comment.'",';
     $jsonEventLog='"eventlog": "'.$this->eventlog.'",';
     $jsonCompany='"company": "'.$this->company.'",';
     $jsonTenant='"tenant": "'.$this->tenant.'"';
     $jsonEnd='}';
     
-    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonResult.$jsonParams.$jsonDisplay.$jsonSatisfaction.$jsonComment.$jsonEventLog.$jsonCompany.$jsonTenant.$jsonEnd;
+    return $jsonStart.$jsonAction.$jsonNextUrl.$jsonResult.$jsonParams.$jsonDisplay.$jsonSatisfaction.$jsonProfile.$jsonComment.$jsonEventLog.$jsonCompany.$jsonTenant.$jsonEnd;
     }
     catch(exception $ex)
     {
