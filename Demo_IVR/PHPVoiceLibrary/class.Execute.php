@@ -7,7 +7,7 @@
 
 class Execute
 {
-$nexturl,$app,$result,$params,$display,$application,$eventlog,$data
+
    // private $file="TestRecord_1.wav";
     private $nexturl="http://192.168.1.195/IVR/end.php";
     private $result="result_1234";
