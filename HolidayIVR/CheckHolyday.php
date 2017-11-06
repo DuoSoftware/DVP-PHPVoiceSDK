@@ -6,62 +6,78 @@ echo "Today is " . date("Y.m.d") . "<br>";
 echo "Today is " . date("Y-m-d") . "<br>";
 echo "Today is " . date("l");
 */
-
-//Class IsHolyday
-//{
-$date=$d=date("Y-m-d");
-$result = IsVoicemail($date,"myCSVFile.csv","18:00","23:00");
-
-print ("\n".$result."\n");
-
+Class IsHolyday
+{
 function IsVoicemail($date,$holydayFile,$startTime,$endTime)
 {
-	$day = getdate()[weekday];
+ $dateget=getdate();
+$day =  $dateget['weekday'];
+//	$day = getdate()[weekday];
+
+if(strpos($startTime,":") == 1)
+{
+$startTime = "0".$startTime;
+//print ("0".$startTime);
+}
+if(strpos($endTime,":") == 1)
+{
+$endTime = "0".$endTime;
+//print ("0".$startTime);
+}
 
 	if ($day != "Saturday" && $day != "Sunday")
 	{
-		$ary = getHoliday($date,$holydayFile);
+		$ary = $this->getHoliday($date,$holydayFile);
 		$t=date("H:i");
 		if($ary)
 		{
+			$holidayStart=$ary[1];
+			$holidayEnd=$ary[2];
+			if(strpos($ary[1],":") == 1)
+			{
+			$holidayStart= "0".$ary[1];
+			}
+			if(strpos($ary[2],":") == 1)
+                        {
+                        $holidayEnd= "0".$ary[2];
+                        }
+
 		//	$t=date("H:i");
-		        if($ary[1] <= $t && $t <= $ary[2])
+			if($t <= $startTime || $endTime <= $t)
+                        {
+                                //VOICEMAIL;
+                                return true;
+                        }
+		        elseif($holidayStart <= $t && $t <= $holidayEnd)
 		        {
 				//VOICEMAIL;
-				return "VM T within configured leave time";
 			        return true;
 		        }
-		        elseif($startTime <= $t && $t <= $ary[1])
+		        elseif($startTime <= $t && $t <= $holidayStart)
 		        {
 			        //within ofc start time and holyday start time
-				return "within ofc start time and holyday start time";
 				return false;
 		        }
-			elseif($ary[2] <= $t && $t <= $endTime)
+			elseif($holidayEnd <= $t && $t <= $endTime)
                         {
                                 //within holyday end time and ofc end time
-				return "within holyday end time and ofc end time";
                                 return false;
                         }
 			else
 			{
-				return "VM T holyday other times ";
 				return true;
 			}
-
 		}
 		else
 		{
 			if ($startTime <= $t && $t <= $endTime)
 			{
 				//OFC hours
-				return "OFC hours";
 				return false;
 			}
 			else
 			{
 				//after OFC
-				return "VM T after OFC";
 				return true;
 			}
 //			echo "RUN>>>>>>>>>>>>>>>>>>>>";
@@ -70,11 +86,9 @@ function IsVoicemail($date,$holydayFile,$startTime,$endTime)
 	else
 	{
 		//Saturday and Sunday
-		return "VM T Saturday and Sunday";
 		return true;
 	}
 }
-
 function getHoliday($d,$fileName)
 {
 	$file = fopen($fileName, 'r');
@@ -89,6 +103,5 @@ function getHoliday($d,$fileName)
 	}
 	fclose($file);
 }
-
-//}
+}
 ?>
